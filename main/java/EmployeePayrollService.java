@@ -70,6 +70,16 @@ public class EmployeePayrollService {
     }
 
     /**
+     * counts entries into the file
+     * @param ioService enum type
+     * @return file entry count
+     */
+    public long countEntries(IOService ioService) {
+        if(ioService.equals(IOService.FILE_IO));
+        return new EmployeePayrollFileIOService().countEntries();
+    }
+
+    /**
      * prints data into the file
      * @param ioService
      */

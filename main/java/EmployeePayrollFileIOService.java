@@ -7,10 +7,6 @@ import java.util.List;
 public class EmployeePayrollFileIOService {
     public static String PAYROLL_FILE_NAME = "payroll-file.txt";
 
-    /**
-     * writes the data into the file
-     * @param employeePayrollList
-     */
     public void writeData(List<EmployeePayrollData> employeePayrollList) {
         StringBuffer empBuffer = new StringBuffer();
         employeePayrollList.forEach(employee -> {
@@ -24,14 +20,21 @@ public class EmployeePayrollFileIOService {
         }
     }
 
-    /**
-     * prints the data from the file
-     */
     public void printData() {
         try {
             Files.lines(new File(PAYROLL_FILE_NAME).toPath()).forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public long countEntries() {
+        long entries = 0;
+        try {
+            entries = Files.lines(new File(PAYROLL_FILE_NAME).toPath()).count();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return entries;
     }
 }
