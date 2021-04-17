@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,12 +47,19 @@ public class EmployeePayrollService {
     /**
      * main method
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Employee Payroll service program!");
         ArrayList<EmployeePayrollData> employeePayrollList = new ArrayList<EmployeePayrollData>();
         EmployeePayrollService employeePayrollService = new EmployeePayrollService(employeePayrollList);
         Scanner consoleInputReader = new Scanner(System.in);
         employeePayrollService.readEmployeePayrollData(consoleInputReader);
         employeePayrollService.writeEmployeePayrollData();
+
+        /**
+         * UC2:-Check File Exists, Delete File and Check File Not Exist, Create Directory,
+         *      Create Empty File, List Files, Directories as well as Files with Extension.
+         */
+        FileOperations fileOperations = new FileOperations();
+        fileOperations.fileOperationDemonstrator();
     }
 }
