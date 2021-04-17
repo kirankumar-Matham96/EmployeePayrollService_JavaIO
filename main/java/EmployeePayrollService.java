@@ -80,6 +80,15 @@ public class EmployeePayrollService {
     }
 
     /**
+     *
+     * @return
+     */
+    public List<EmployeePayrollData> printEntries(IOService ioService){
+        if(ioService.equals(IOService.FILE_IO));
+        return new EmployeePayrollFileIOService().readData();
+    }
+
+    /**
      * prints data into the file
      * @param ioService
      */
