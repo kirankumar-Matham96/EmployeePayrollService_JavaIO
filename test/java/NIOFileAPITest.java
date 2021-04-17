@@ -8,13 +8,13 @@ import java.nio.file.Paths;
 import java.util.stream.IntStream;
 
 public class NIOFileAPITest {
-    private static String HOME = System.getProperty("Path","D:\\BridgeLab\\Fellowship");
+    private static String HOME = System.getProperty("Path", "D:\\BridgeLab\\Fellowship");
     private static String PLAY_WITH_NIO = "TempPlayGround";
 
     @Test
     public void givenPathWhenCheckedThenConfirm() throws IOException {
         //check file existence
-        System.out.println("HOME: "+HOME);
+        System.out.println("HOME: " + HOME);
         Path homePath = Paths.get(HOME);
         Assert.assertTrue(Files.exists(homePath));
 
