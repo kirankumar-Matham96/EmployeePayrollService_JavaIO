@@ -8,9 +8,16 @@ import java.nio.file.Paths;
 import java.util.stream.IntStream;
 
 public class NIOFileAPITest {
-    private static String HOME = System.getProperty("Path", "D:\\BridgeLab\\Fellowship");
+    private static String HOME = System.getProperty("Path","D:\\BridgeLab\\Fellowship\\intellijWorkspace\\TempFolderForJavaIO");
     private static String PLAY_WITH_NIO = "TempPlayGround";
 
+    /**
+     * UC2:
+     * Checks file existence in the given path
+     * creates new files and directories
+     * delete existing files
+     * @throws IOException
+     */
     @Test
     public void givenPathWhenCheckedThenConfirm() throws IOException {
         //check file existence
@@ -45,5 +52,12 @@ public class NIOFileAPITest {
         Files.newDirectoryStream(playPath, path ->
                 path.toFile().isFile() &&
                         path.toString().startsWith("temp")).forEach(System.out::println);
+    }
+
+    @Test
+    public void givenADirectoryWhenWatchedListsAllTheActivities() throws IOException {
+        Path dir = Paths.get(HOME+"\\"+PLAY_WITH_NIO);
+        Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+        new Java8WatchServiceExample(dir).processEvents();
     }
 }

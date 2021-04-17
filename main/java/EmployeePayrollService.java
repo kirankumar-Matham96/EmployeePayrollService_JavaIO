@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -40,8 +41,13 @@ public class EmployeePayrollService {
     /**
      * to write into the console
      */
-    private void writeEmployeePayrollData() {
-        System.out.println("\n Writing Employee Payroll Roster to Console\n" + employeePayrollList);
+    public void writeEmployeePayrollData(EmployeePayrollService.IOService ioService) {
+        if(ioService.equals(IOService.CONSOLE_IO)) {
+            System.out.println("\n Writing Employee Payroll Roster to Console\n" + employeePayrollList);
+        }
+        else if(ioService.equals(IOService.FILE_IO)){
+            new EmployeePayrollFileIOService().writeData(employeePayrollList);
+        }
     }
 
     /**
@@ -53,7 +59,7 @@ public class EmployeePayrollService {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService(employeePayrollList);
         Scanner consoleInputReader = new Scanner(System.in);
         employeePayrollService.readEmployeePayrollData(consoleInputReader);
-        employeePayrollService.writeEmployeePayrollData();
+        employeePayrollService.writeEmployeePayrollData(IOService.CONSOLE_IO);
 
         /**
          * UC2:-Check File Exists, Delete File and Check File Not Exist, Create Directory,
@@ -61,5 +67,14 @@ public class EmployeePayrollService {
          */
         FileOperations fileOperations = new FileOperations();
         fileOperations.fileOperationDemonstrator();
+    }
+
+    /**
+     * prints data into the file
+     * @param ioService
+     */
+    public void printData(IOService ioService) {
+        if(ioService.equals(IOService.FILE_IO));
+        new EmployeePayrollFileIOService().printData();
     }
 }
