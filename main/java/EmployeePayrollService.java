@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+
     public enum IOService {
         CONSOLE_IO, FILE_IO, DB_IO, REST_IO
     }
@@ -40,8 +41,8 @@ public class EmployeePayrollService {
     /**
      * to write into the console
      */
-    private void writeEmployeePayrollData() {
-        System.out.println("\n Writing Employee Payroll Roster to Console\n" + employeePayrollList);
+    public void writeEmployeePayrollData() {
+            System.out.println("\n Writing Employee Payroll Roster to Console\n" + employeePayrollList);
     }
 
     /**

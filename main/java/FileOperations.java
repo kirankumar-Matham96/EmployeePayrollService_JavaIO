@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.util.stream.IntStream;
 
 public class FileOperations {
-    private static String HOME = System.getProperty("Path", "D:\\BridgeLab\\Fellowship");
+    private static String HOME = System.getProperty("Path", "D:\\BridgeLab\\Fellowship\\intellijWorkspace");
     private static String PLAY_WITH_NIO = "TempPlayGround";
 
     public void fileOperationDemonstrator() throws IOException {
@@ -25,7 +25,7 @@ public class FileOperations {
 
         //create file
         IntStream.range(1, 10).forEach(counter -> {
-            Path tempFile = Paths.get(playPath + "\\temp" + counter);
+            Path tempFile = Paths.get(playPath + "\\temp" + counter+".txt");
             System.out.println("is tempFile exists?1" + Files.notExists(tempFile));
             try {
                 Files.createFile(tempFile);
